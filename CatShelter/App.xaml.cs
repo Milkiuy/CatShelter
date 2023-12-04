@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CatShelter.Entities;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,7 @@ namespace CatShelter
     /// </summary>
     public partial class App : Application
     {
+        public static CatShelterEntities Context { get; } = new CatShelterEntities();
+        public static Users CurrentUser = null;
     }
 }

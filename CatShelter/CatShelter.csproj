@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,12 +72,65 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Entities\Breeds.cs">
+      <DependentUpon>CatShelterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Cats.cs">
+      <DependentUpon>CatShelterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CatShelterModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CatShelterModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CatShelterModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CatShelterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CatShelterModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CatShelterModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Characters.cs">
+      <DependentUpon>CatShelterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Colors.cs">
+      <DependentUpon>CatShelterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Genders.cs">
+      <DependentUpon>CatShelterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Roles.cs">
+      <DependentUpon>CatShelterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\sysdiagrams.cs">
+      <DependentUpon>CatShelterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Users.cs">
+      <DependentUpon>CatShelterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\CatsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\CatsPage.xaml.cs">
+      <DependentUpon>CatsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,6 +148,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Entities\CatShelterModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CatShelterModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\CatShelterModel.edmx.diagram">
+      <DependentUpon>CatShelterModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +163,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Entities\CatShelterModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CatShelterModel.Context.cs</LastGenOutput>
+      <DependentUpon>CatShelterModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Entities\CatShelterModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CatShelterModel.edmx</DependentUpon>
+      <LastGenOutput>CatShelterModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

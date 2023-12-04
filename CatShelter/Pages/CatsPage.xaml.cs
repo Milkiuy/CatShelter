@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CatShelter
+namespace CatShelter.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для CatsPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CatsPage : Page
     {
-        public MainWindow()
+        public CatsPage()
         {
             InitializeComponent();
-            FrameMain.Navigate(new Pages.LoginPage());
         }
     }
 }
