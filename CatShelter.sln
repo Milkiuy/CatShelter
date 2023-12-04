@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatShelter", "CatShelter\CatShelter.csproj", "{AD9692F0-AD1A-47E8-AB06-B9FD4BF3E23F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD9692F0-AD1A-47E8-AB06-B9FD4BF3E23F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD9692F0-AD1A-47E8-AB06-B9FD4BF3E23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD9692F0-AD1A-47E8-AB06-B9FD4BF3E23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD9692F0-AD1A-47E8-AB06-B9FD4BF3E23F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADEA0CB1-0CC4-40E4-801D-51ECCFB1AA06}
+	EndGlobalSection
+EndGlobal
