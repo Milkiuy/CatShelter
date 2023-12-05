@@ -23,6 +23,37 @@ namespace CatShelter.Pages
         public CatsPage()
         {
             InitializeComponent();
+            ListCats.ItemsSource = App.Context.Cats.ToList();
+            if(App.CurrentUser == null || App.CurrentUser.Role == 2)
+                AddBtn.Visibility = Visibility.Hidden;
+        }
+
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void InfoBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(MessageBox.Show("Вы уверены, что хотите вернуться?","Уведомление",MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                NavigationService.GoBack();
+            }
         }
     }
 }

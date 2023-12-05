@@ -105,9 +105,6 @@
     <Compile Include="Entities\Roles.cs">
       <DependentUpon>CatShelterModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\sysdiagrams.cs">
-      <DependentUpon>CatShelterModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\Users.cs">
       <DependentUpon>CatShelterModel.tt</DependentUpon>
     </Compile>
@@ -164,21 +161,22 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Entities\CatShelterModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CatShelterModel.Context.cs</LastGenOutput>
       <DependentUpon>CatShelterModel.edmx</DependentUpon>
+      <LastGenOutput>CatShelterModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Entities\CatShelterModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CatShelterModel.edmx</DependentUpon>
       <LastGenOutput>CatShelterModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\cat8600.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -27,7 +27,7 @@ namespace CatShelter.Pages
 
         private void BtnGuest_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new CatsPage());
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)

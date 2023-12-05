@@ -4,14 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3eb73a0162bd4afeac3020d698e7a23f" Name="Diagram1">
-        <EntityTypeShape EntityType="CatShelterModel.Breeds" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+      <Diagram DiagramId="a9c4f3aeb8fa4ffcb5a78db855442919" Name="Diagram1">
+        <EntityTypeShape EntityType="CatShelterModel.Breeds" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="CatShelterModel.Cats" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CatShelterModel.Characters" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CatShelterModel.Colors" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatShelterModel.Characters" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatShelterModel.Colors" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CatShelterModel.Genders" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CatShelterModel.Roles" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CatShelterModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CatShelterModel.Users" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="CatShelterModel.FK_Cats_Breeds" ManuallyRouted="false" />
         <AssociationConnector Association="CatShelterModel.FK_Cats_Characters" ManuallyRouted="false" />

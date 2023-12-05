@@ -9,9 +9,11 @@
 
 namespace CatShelter.Entities
 {
+    using CatShelter.Properties;
     using System;
     using System.Collections.Generic;
-    
+    using System.IO;
+
     public partial class Cats
     {
         public int CatID { get; set; }
@@ -22,7 +24,67 @@ namespace CatShelter.Entities
         public int Breed { get; set; }
         public int Character { get; set; }
         public int Gender { get; set; }
-    
+        public byte[] Image { get; set; }
+        public byte[] CorrectImage
+        {
+            get
+            {
+                if (Image == null)
+                    return File.ReadAllBytes("../../Resources/cat8600.png");
+                else return Image;
+            }
+        }
+        public string TextCharacter
+        {
+            get
+            {
+                return Characters.CharacterName.ToString();
+            }
+        }
+        public string TextBreed
+        {
+            get
+            {
+                return Breeds.BreedName.ToString();
+            }
+        }
+        public string TextColor
+        {
+            get
+            {
+                return Colors.ColorName.ToString();
+            }
+        }
+        public string TextGender
+        {
+            get
+            {
+                return Genders.GenderName.ToString();
+            }
+        }
+        public string AdminVisibility
+        {
+            get
+            {
+                if (App.CurrentUser == null)
+                    return "Hidden";
+                else if (App.CurrentUser.Role == 2)
+                    return "Hidden";
+                else return "Visible";
+            }
+        }
+        public string UserVisibility
+        {
+            get
+            {
+                if (App.CurrentUser == null)
+                    return "Hidden";
+                else if (App.CurrentUser.Role == 2)
+                    return "Hidden";
+                else return "Visible";
+            }
+        }
+
         public virtual Breeds Breeds { get; set; }
         public virtual Characters Characters { get; set; }
         public virtual Colors Colors { get; set; }

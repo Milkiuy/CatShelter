@@ -9,6 +9,10 @@
       Title="CatsPage">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
         <ListView x:Name="ListCats">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -16,25 +20,35 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="500"/>
+                                <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
-                            <Image Source="{Binding Image}"/>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Имя воспитанника - " />
-                                <TextBlock Text="{Binding CatName}" />
+                            <Image Source="{Binding CorrectImage}"/>
+                            <StackPanel Grid.Column="1">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Имя воспитанника - " />
+                                    <TextBlock Text="{Binding CatName}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Возраст - " />
+                                    <TextBlock Text="{Binding Age}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Характер - " />
+                                    <TextBlock Text="{Binding TextCharacter}" />
+                                </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Возраст - " />
-                                <TextBlock Text="{Binding Age}" />
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Характер - " />
-                                <TextBlock Text="{Binding Character}" />
+                            <StackPanel Grid.Column="2">
+                                <Button x:Name="EditBtn" Click="EditBtn_Click" Content="Редактировать" Visibility="{Binding AdminVisibility}"/>
+                                <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Content="Удалить" Visibility="{Binding AdminVisibility}"/>
+                                <Button x:Name="InfoBtn" Click="InfoBtn_Click" Content="Больше информации"/>
                             </StackPanel>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button HorizontalAlignment="Left" x:Name="AddBtn" Click="AddBtn_Click" Content="Добавить кота" Grid.Row="1"/>
+        <Button x:Name="BackBtn" Click="BackBtn_Click" Content="Назад" Grid.Row="1"/>
     </Grid>
 </Page>
