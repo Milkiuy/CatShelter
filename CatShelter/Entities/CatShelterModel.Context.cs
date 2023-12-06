@@ -15,9 +15,17 @@ namespace CatShelter.Entities
     
     public partial class CatShelterEntities : DbContext
     {
+        private static CatShelterEntities context;
         public CatShelterEntities()
             : base("name=CatShelterEntities")
         {
+        }
+
+        public static CatShelterEntities GetContext()
+        {
+            if (context == null)
+                context = new CatShelterEntities();
+            return context;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

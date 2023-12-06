@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CatShelter.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,19 +24,30 @@ namespace CatShelter.Pages
         public CatsPage()
         {
             InitializeComponent();
-            ListCats.ItemsSource = App.Context.Cats.ToList();
+            UpdateCats();
             if(App.CurrentUser == null || App.CurrentUser.Role == 2)
                 AddBtn.Visibility = Visibility.Hidden;
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new AddEditCatPage((sender as Button).DataContext as Cats));
+        }
 
+        private void UpdateCats()
+        {
+            ListCats.ItemsSource = App.Context.Cats.ToList();
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var cat = (sender as Button).DataContext as Cats;
+            if(MessageBox.Show($"Вы точно хотите удалить кота по имени {cat.CatName}","Уведомление",MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                App.Context.Cats.Remove(cat);
+                App.Context.SaveChanges();
+                UpdateCats();
+            }
         }
 
         private void InfoBtn_Click(object sender, RoutedEventArgs e)
@@ -45,7 +57,7 @@ namespace CatShelter.Pages
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AddEditCatPage(null));
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)

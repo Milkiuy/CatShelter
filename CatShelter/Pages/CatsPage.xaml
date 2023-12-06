@@ -39,9 +39,9 @@
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Grid.Column="2">
+                                <Button x:Name="InfoBtn" Click="InfoBtn_Click" Content="Подробнее" Visibility="{Binding UserVisibility}"/>
                                 <Button x:Name="EditBtn" Click="EditBtn_Click" Content="Редактировать" Visibility="{Binding AdminVisibility}"/>
                                 <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Content="Удалить" Visibility="{Binding AdminVisibility}"/>
-                                <Button x:Name="InfoBtn" Click="InfoBtn_Click" Content="Больше информации"/>
                             </StackPanel>
                         </Grid>
                     </Border>
