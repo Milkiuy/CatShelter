@@ -6,21 +6,33 @@
       xmlns:local="clr-namespace:CatShelter.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CatsPage">
+      Title="CatsPage" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="ListCats">
+        <TextBox Width="250" HorizontalAlignment="Left" x:Name="SearchTxt" TextChanged="SearchTxt_TextChanged"/>
+        <ComboBox Width="250" Name="CBSort" HorizontalAlignment="Center">
+            <ComboBoxItem Content="По умолчанию"/>
+            <ComboBoxItem Content="От А до Я"/>
+            <ComboBoxItem Content="От Я до А"/>
+            <ComboBoxItem Content="По возрастанию возраста"/>
+            <ComboBoxItem Content="По убыванию возраста"/>
+        </ComboBox>
+        <ComboBox Width="250" Name="CBFilter" HorizontalAlignment="Right">
+            <ComboBoxItem Content="Все породы"/>
+        </ComboBox>
+        <ListView Grid.Row="1" x:Name="ListCats">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="1" BorderBrush="Black">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="500"/>
+                                <ColumnDefinition Width="450"/>
                                 <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <Image Source="{Binding CorrectImage}"/>
@@ -48,7 +60,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button HorizontalAlignment="Left" x:Name="AddBtn" Click="AddBtn_Click" Content="Добавить кота" Grid.Row="1"/>
-        <Button x:Name="BackBtn" Click="BackBtn_Click" Content="Назад" Grid.Row="1"/>
+        <Button HorizontalAlignment="Left" x:Name="AddBtn" Click="AddBtn_Click" Content="Добавить кота" Grid.Row="2"/>
+        <Button x:Name="BackBtn" Click="BackBtn_Click" Content="Назад" Grid.Row="2"/>
     </Grid>
 </Page>

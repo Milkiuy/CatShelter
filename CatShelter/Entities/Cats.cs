@@ -30,7 +30,7 @@ namespace CatShelter.Entities
             get
             {
                 if (Image == null)
-                    return File.ReadAllBytes("../../Resources/cat8600.png");
+                    return File.ReadAllBytes("../../Resources/cat.png");
                 else return Image;
             }
         }

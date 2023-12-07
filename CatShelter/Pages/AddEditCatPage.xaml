@@ -21,7 +21,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Width="130" Text="Дата поступления"/>
-                    <DatePicker Text="{Binding ReceiptDate}"/>
+                    <DatePicker SelectedDate="{Binding ReceiptDate}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Width="130" Text="Окрас"/>
@@ -42,7 +42,7 @@
             </StackPanel>
             <StackPanel>
                 <Border Margin="5" BorderThickness="1" BorderBrush="Black">
-                    <Image Source="{Binding CorrectImage}" Width="250" Height="250"/>
+                    <Image x:Name="ImageService" Source="{Binding CorrectImage}" Width="250" Height="250"/>
                 </Border>
                 <Button Width="200" Name="SelectImageBtn" Click="SelectImageBtn_Click" Content="Выбрать фотографию"/>
                 <Button Width="200" Name="SaveBtn" Click="SaveBtn_Click" Content="Сохранить"/>

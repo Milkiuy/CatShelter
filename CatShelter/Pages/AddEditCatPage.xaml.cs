@@ -1,6 +1,8 @@
 ﻿using CatShelter.Entities;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,7 @@ namespace CatShelter.Pages
     /// </summary>
     public partial class AddEditCatPage : Page
     {
+        byte[] image = null;
         Cats cat = new Cats();
         public AddEditCatPage(Cats _cat)
         {
@@ -36,12 +39,36 @@ namespace CatShelter.Pages
 
         private void SelectImageBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image | *.png; *.jpg; *.jpeg";
+            ofd.Multiselect = false;
+            if(ofd.ShowDialog() == true)
+            {
+                image = File.ReadAllBytes(ofd.FileName);
+                ImageService.Source = new ImageSourceConverter().ConvertFrom(image) as ImageSource;
+                cat.Image = image;
+            }
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            StringBuilder errorBuilder = new StringBuilder();
+            if (String.IsNullOrEmpty(cat.CatName))
+                errorBuilder.AppendLine("Введите имя");
+            if(String.IsNullOrEmpty(cat.Age.ToString()))
+                errorBuilder.AppendLine("Введите возраст");
+            if (cat.CatID == 0)
+                App.Context.Cats.Add(cat);
+            try
+            {
+                App.Context.SaveChanges();
+                MessageBox.Show("Информация сохранена", "Увдеомление", MessageBoxButton.OK,MessageBoxImage.Information);
+                NavigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
     }
 }

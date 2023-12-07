@@ -36,7 +36,28 @@ namespace CatShelter.Pages
 
         private void UpdateCats()
         {
-            ListCats.ItemsSource = App.Context.Cats.ToList();
+            var breeds = App.Context.Breeds.ToList();
+
+            var cat = App.Context.Cats.ToList();
+            cat = cat.Where(p => p.CatName.ToLower().Contains(SearchTxt.Text.ToLower())).ToList();
+            
+            if(CBSort.SelectedIndex == 1)
+                cat = cat.OrderBy(p => p.CatName).ToList();
+            if (CBSort.SelectedIndex == 2)
+                cat = cat.OrderByDescending(p => p.CatName).ToList();
+            if (CBSort.SelectedIndex == 3)
+                cat = cat.OrderBy(p => p.Age).ToList();
+            if (CBSort.SelectedIndex == 4)
+                cat = cat.OrderByDescending(p => p.CatName).ToList();
+
+            for (int i = 0; i < breeds.Count; i++)
+            {
+                if(i == 0)
+                    ListCats.ItemsSource = cat;
+                else if(CBFilter.SelectedIndex == i)
+                    cat = cat.Where(p => p.Breed == CBFilter.SelectedIndex).ToList();
+            }
+            ListCats.ItemsSource = cat;
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
@@ -66,6 +87,16 @@ namespace CatShelter.Pages
             {
                 NavigationService.GoBack();
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateCats();
+        }
+
+        private void SearchTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateCats();
         }
     }
 }
