@@ -9,13 +9,18 @@
 
 namespace CatShelter.Entities
 {
-    using CatShelter.Properties;
     using System;
     using System.Collections.Generic;
     using System.IO;
 
     public partial class Cats
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cats()
+        {
+            this.Application = new HashSet<Application>();
+        }
+    
         public int CatID { get; set; }
         public string CatName { get; set; }
         public decimal Age { get; set; }
@@ -83,6 +88,8 @@ namespace CatShelter.Entities
             }
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Application> Application { get; set; }
         public virtual Breeds Breeds { get; set; }
         public virtual Characters Characters { get; set; }
         public virtual Colors Colors { get; set; }

@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище CatShelterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="ApplicationID" />
+          </Key>
+          <Property Name="ApplicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client" Type="int" />
+          <Property Name="Cat" Type="int" />
+        </EntityType>
         <EntityType Name="Breeds">
           <Key>
             <PropertyRef Name="BreedID" />
@@ -18,7 +26,7 @@
           </Key>
           <Property Name="CatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CatName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Age" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Age" Type="decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="ReceiptDate" Type="date" Nullable="false" />
           <Property Name="Color" Type="int" Nullable="false" />
           <Property Name="Breed" Type="int" Nullable="false" />
@@ -66,6 +74,30 @@
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Role" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Application_Cats">
+          <End Role="Cats" Type="Self.Cats" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cats">
+              <PropertyRef Name="CatID" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="Cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Cats_Breeds">
           <End Role="Breeds" Type="Self.Breeds" Multiplicity="1" />
           <End Role="Cats" Type="Self.Cats" Multiplicity="*" />
@@ -127,6 +159,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище CatShelterModelContainer">
+          <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Breeds" EntityType="Self.Breeds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cats" EntityType="Self.Cats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Characters" EntityType="Self.Characters" Schema="dbo" store:Type="Tables" />
@@ -134,6 +167,14 @@
           <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Application_Cats" Association="Self.FK_Application_Cats">
+            <End Role="Cats" EntitySet="Cats" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Users" Association="Self.FK_Application_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
           <AssociationSet Name="FK_Cats_Breeds" Association="Self.FK_Cats_Breeds">
             <End Role="Breeds" EntitySet="Breeds" />
             <End Role="Cats" EntitySet="Cats" />
@@ -160,6 +201,16 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CatShelterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="ApplicationID" />
+          </Key>
+          <Property Name="ApplicationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client" Type="Int32" />
+          <Property Name="Cat" Type="Int32" />
+          <NavigationProperty Name="Cats" Relationship="Self.FK_Application_Cats" FromRole="Application" ToRole="Cats" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Application_Users" FromRole="Application" ToRole="Users" />
+        </EntityType>
         <EntityType Name="Breeds">
           <Key>
             <PropertyRef Name="BreedID" />
@@ -174,13 +225,14 @@
           </Key>
           <Property Name="CatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CatName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Age" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Age" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
           <Property Name="ReceiptDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Color" Type="Int32" Nullable="false" />
           <Property Name="Breed" Type="Int32" Nullable="false" />
           <Property Name="Character" Type="Int32" Nullable="false" />
           <Property Name="Gender" Type="Int32" Nullable="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Application_Cats" FromRole="Cats" ToRole="Application" />
           <NavigationProperty Name="Breeds" Relationship="Self.FK_Cats_Breeds" FromRole="Cats" ToRole="Breeds" />
           <NavigationProperty Name="Characters" Relationship="Self.FK_Cats_Characters" FromRole="Cats" ToRole="Characters" />
           <NavigationProperty Name="Colors" Relationship="Self.FK_Cats_Colors" FromRole="Cats" ToRole="Colors" />
@@ -229,8 +281,33 @@
           <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Application_Users" FromRole="Users" ToRole="Application" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
         </EntityType>
+        <Association Name="FK_Application_Cats">
+          <End Role="Cats" Type="Self.Cats" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cats">
+              <PropertyRef Name="CatID" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="Cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Cats_Breeds">
           <End Role="Breeds" Type="Self.Breeds" Multiplicity="1" />
           <End Role="Cats" Type="Self.Cats" Multiplicity="*" />
@@ -292,6 +369,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CatShelterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Application" EntityType="Self.Application" />
           <EntitySet Name="Breeds" EntityType="Self.Breeds" />
           <EntitySet Name="Cats" EntityType="Self.Cats" />
           <EntitySet Name="Characters" EntityType="Self.Characters" />
@@ -299,6 +377,14 @@
           <EntitySet Name="Genders" EntityType="Self.Genders" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Application_Cats" Association="Self.FK_Application_Cats">
+            <End Role="Cats" EntitySet="Cats" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Users" Association="Self.FK_Application_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
           <AssociationSet Name="FK_Cats_Breeds" Association="Self.FK_Cats_Breeds">
             <End Role="Breeds" EntitySet="Breeds" />
             <End Role="Cats" EntitySet="Cats" />
@@ -326,6 +412,15 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище CatShelterModelContainer" CdmEntityContainer="CatShelterEntities">
+          <EntitySetMapping Name="Application">
+            <EntityTypeMapping TypeName="CatShelterModel.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="Cat" ColumnName="Cat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Breeds">
             <EntityTypeMapping TypeName="CatShelterModel.Breeds">
               <MappingFragment StoreEntitySet="Breeds">

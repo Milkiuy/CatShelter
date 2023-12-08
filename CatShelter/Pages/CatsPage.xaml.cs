@@ -27,6 +27,8 @@ namespace CatShelter.Pages
             UpdateCats();
             if(App.CurrentUser == null || App.CurrentUser.Role == 2)
                 AddBtn.Visibility = Visibility.Hidden;
+            CBSort.SelectedIndex = 0;
+            CBFilter.SelectedIndex = 0;
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
@@ -36,18 +38,20 @@ namespace CatShelter.Pages
 
         private void UpdateCats()
         {
-            var breeds = App.Context.Breeds.ToList();
+            var breeds = App.Context.Breeds.OrderBy(p => p.BreedID).Select(p => p.BreedName).ToList();
+            for (int i = 0; i < breeds.Count; i++)
+                CBFilter.Items.Add(breeds[i]);
 
             var cat = App.Context.Cats.ToList();
             cat = cat.Where(p => p.CatName.ToLower().Contains(SearchTxt.Text.ToLower())).ToList();
             
             if(CBSort.SelectedIndex == 1)
                 cat = cat.OrderBy(p => p.CatName).ToList();
-            if (CBSort.SelectedIndex == 2)
+            else if (CBSort.SelectedIndex == 2)
                 cat = cat.OrderByDescending(p => p.CatName).ToList();
-            if (CBSort.SelectedIndex == 3)
+            else if (CBSort.SelectedIndex == 3)
                 cat = cat.OrderBy(p => p.Age).ToList();
-            if (CBSort.SelectedIndex == 4)
+            else if (CBSort.SelectedIndex == 4)
                 cat = cat.OrderByDescending(p => p.CatName).ToList();
 
             for (int i = 0; i < breeds.Count; i++)
@@ -71,11 +75,6 @@ namespace CatShelter.Pages
             }
         }
 
-        private void InfoBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddEditCatPage(null));
@@ -97,6 +96,21 @@ namespace CatShelter.Pages
         private void SearchTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateCats();
+        }
+
+        private void CBSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateCats();
+        }
+
+        private void CBFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateCats();
+        }
+
+        private void ApplicationBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

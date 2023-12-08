@@ -4,14 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a9c4f3aeb8fa4ffcb5a78db855442919" Name="Diagram1">
-        <EntityTypeShape EntityType="CatShelterModel.Breeds" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+      <Diagram DiagramId="210f3e7edf4940c09907153afddf3e6d" Name="Diagram1">
+        <EntityTypeShape EntityType="CatShelterModel.Application" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatShelterModel.Breeds" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CatShelterModel.Cats" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CatShelterModel.Characters" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatShelterModel.Characters" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CatShelterModel.Colors" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CatShelterModel.Genders" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CatShelterModel.Roles" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CatShelterModel.Users" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatShelterModel.Genders" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatShelterModel.Roles" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatShelterModel.Users" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <AssociationConnector Association="CatShelterModel.FK_Application_Cats" ManuallyRouted="false" />
+        <AssociationConnector Association="CatShelterModel.FK_Application_Users" ManuallyRouted="false" />
         <AssociationConnector Association="CatShelterModel.FK_Cats_Breeds" ManuallyRouted="false" />
         <AssociationConnector Association="CatShelterModel.FK_Cats_Characters" ManuallyRouted="false" />
         <AssociationConnector Association="CatShelterModel.FK_Cats_Colors" ManuallyRouted="false" />

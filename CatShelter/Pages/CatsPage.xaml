@@ -15,14 +15,14 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <TextBox Width="250" HorizontalAlignment="Left" x:Name="SearchTxt" TextChanged="SearchTxt_TextChanged"/>
-        <ComboBox Width="250" Name="CBSort" HorizontalAlignment="Center">
+        <ComboBox Width="250" Name="CBSort" HorizontalAlignment="Center" SelectionChanged="CBSort_SelectionChanged">
             <ComboBoxItem Content="По умолчанию"/>
             <ComboBoxItem Content="От А до Я"/>
             <ComboBoxItem Content="От Я до А"/>
             <ComboBoxItem Content="По возрастанию возраста"/>
             <ComboBoxItem Content="По убыванию возраста"/>
         </ComboBox>
-        <ComboBox Width="250" Name="CBFilter" HorizontalAlignment="Right">
+        <ComboBox Width="250" Name="CBFilter" HorizontalAlignment="Right" SelectionChanged="CBFilter_SelectionChanged">
             <ComboBoxItem Content="Все породы"/>
         </ComboBox>
         <ListView Grid.Row="1" x:Name="ListCats">
@@ -51,7 +51,7 @@
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Grid.Column="2">
-                                <Button x:Name="InfoBtn" Click="InfoBtn_Click" Content="Подробнее" Visibility="{Binding UserVisibility}"/>
+                                <Button x:Name="ApplicationBtn" Click="ApplicationBtn_Click" Content="Подробнее" Visibility="{Binding UserVisibility}"/>
                                 <Button x:Name="EditBtn" Click="EditBtn_Click" Content="Редактировать" Visibility="{Binding AdminVisibility}"/>
                                 <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Content="Удалить" Visibility="{Binding AdminVisibility}"/>
                             </StackPanel>
