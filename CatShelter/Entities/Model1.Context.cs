@@ -25,7 +25,7 @@ namespace CatShelter.Entities
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Application> Application { get; set; }
+        public virtual DbSet<Applications> Applications { get; set; }
         public virtual DbSet<Breeds> Breeds { get; set; }
         public virtual DbSet<Cats> Cats { get; set; }
         public virtual DbSet<Characters> Characters { get; set; }

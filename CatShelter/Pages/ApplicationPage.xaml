@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CatShelter.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ApplicationPage">
+      Title="Заявки">
 
     <Grid>
         <ListView x:Name="ListApplication">
@@ -17,6 +17,10 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="ФИО заявителя"/>
                                 <TextBlock Text="{Binding FIO}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Имя котика"/>
+                                <TextBlock Text="{Binding CatName}"/>
                             </StackPanel>
                         </Grid>
                     </Border>

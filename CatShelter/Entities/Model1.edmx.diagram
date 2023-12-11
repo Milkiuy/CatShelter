@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="210f3e7edf4940c09907153afddf3e6d" Name="Diagram1">
-        <EntityTypeShape EntityType="CatShelterModel.Application" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+      <Diagram DiagramId="c363f249adf34260b3fa34f9605ec1cc" Name="Diagram1">
+        <EntityTypeShape EntityType="CatShelterModel.Applications" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CatShelterModel.Breeds" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CatShelterModel.Cats" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CatShelterModel.Characters" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />

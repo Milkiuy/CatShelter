@@ -29,7 +29,10 @@ namespace CatShelter.Pages
         {
             InitializeComponent();
             if (_cat != null)
+            {
                 cat = _cat;
+                Title = "Редактирование кота";
+            }
             DataContext = cat;
             CBBreed.ItemsSource = App.Context.Breeds.ToList();
             CBCharacter.ItemsSource = App.Context.Characters.ToList();

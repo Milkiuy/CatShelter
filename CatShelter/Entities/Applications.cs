@@ -12,19 +12,35 @@ namespace CatShelter.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Application
+    public partial class Applications
     {
         public int ApplicationID { get; set; }
         public int Client { get; set; }
         public int Cat { get; set; }
-        //public string FIO
-        //{
-        //    ger
-        //    {
-        //        return Users.Surname.toString()
-        //    }
-        //}
-    
+        public string CatName
+        {
+            get
+            {
+                return Cats.CatName.ToString();
+            }
+        }
+        public string FIO
+        {
+            get
+            {
+                return Users.Surname.ToString() + " " + Users.Name.ToString() + " " + Users.Patronymic.ToString();
+            }
+        }
+        public string AdminVisibility
+        {
+            get
+            {
+                if (App.CurrentUser.Role == 2)
+                    return "Hidden";
+                else return "Visible";
+            }
+        }
+
         public virtual Cats Cats { get; set; }
         public virtual Users Users { get; set; }
     }

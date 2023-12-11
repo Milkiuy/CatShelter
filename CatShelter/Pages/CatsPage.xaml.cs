@@ -110,7 +110,7 @@ namespace CatShelter.Pages
 
         private void ApplicationBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AddEditApplicationPage((sender as Button).DataContext as Cats));
         }
     }
 }

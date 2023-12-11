@@ -18,7 +18,7 @@ namespace CatShelter.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cats()
         {
-            this.Application = new HashSet<Application>();
+            this.Applications = new HashSet<Applications>();
         }
     
         public int CatID { get; set; }
@@ -89,7 +89,7 @@ namespace CatShelter.Entities
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Application> Application { get; set; }
+        public virtual ICollection<Applications> Applications { get; set; }
         public virtual Breeds Breeds { get; set; }
         public virtual Characters Characters { get; set; }
         public virtual Colors Colors { get; set; }
