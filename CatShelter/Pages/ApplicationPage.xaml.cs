@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CatShelter.Entities;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,22 @@ namespace CatShelter.Pages
         public ApplicationPage()
         {
             InitializeComponent();
+            ListApplication.ItemsSource = App.Context.Applications.ToList();
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var delete = (sender as Button).DataContext as Applications;
+            if(MessageBox.Show($"Вы точно хотите удалить заявку {delete.FIO}","Уведомление",MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                App.Context.Applications.Remove(delete);
+                App.Context.SaveChanges();
+            }
         }
     }
 }

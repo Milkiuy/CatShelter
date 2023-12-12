@@ -6,17 +6,22 @@
       xmlns:local="clr-namespace:CatShelter.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddEditApplicationPage">
+      Title="Заявка на принятие в семью">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="400"/>
+            <RowDefinition Height="390"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="{Binding CorrectImage}" Width="200" Height="200"/>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" Visibility="{Binding AdminVisibility}">
                 <TextBlock Width="115" Text="ФИО заявителя"/>
-                <TextBlock Text="{Binding FIO}"/>
+                <TextBlock x:Name="FIOTxt" Text="{Binding FIO}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="115" Text="Имя кота"/>
@@ -35,7 +40,8 @@
                 <TextBlock Text="{Binding TextColor}"/>
             </StackPanel>
         </StackPanel>
-        <Button Grid.Row="1" x:Name="SaveBtn" Content="Добавить заявку" Click="SaveBtn_Click"/>
-        <Button Grid.Row="1" Name="BackBtn" Content="Назад" Click="BackBtn_Click" HorizontalAlignment="Left"/>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Background="#e6e6fa"/>
+        <Button Grid.ColumnSpan="2" Grid.Row="1" x:Name="SaveBtn" Content="Добавить заявку" Click="SaveBtn_Click"/>
+        <Button Grid.ColumnSpan="2" Grid.Row="1" Name="BackBtn" Content="Назад" Click="BackBtn_Click" HorizontalAlignment="Right"/>
     </Grid>
 </Page>

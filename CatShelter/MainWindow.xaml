@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CatShelter"
         mc:Ignorable="d"
-        Title="Кошечки" Height="500" Width="800" WindowStartupLocation="CenterScreen" 
-        MinHeight="500" MinWidth="800" Icon="/Resources/cat.png">
+        Title="Кошечки" Height="550" Width="800" WindowStartupLocation="CenterScreen" 
+        MinHeight="550" MinWidth="800" Icon="/Resources/cat.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#e6e6fa"/>
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28" Text="{Binding ElementName=FrameMain, Path=Content.Title}"/>
         <Image Source="/Resources/cat8600.png" HorizontalAlignment="Left"/>
-        <Frame Grid.Row="1" x:Name="FrameMain" NavigationUIVisibility="Hidden"/>
+        <Frame Grid.Row="1" x:Name="FrameMain"  NavigationUIVisibility="Hidden"/>
+        
     </Grid>
 </Window>

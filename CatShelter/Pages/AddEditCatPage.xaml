@@ -9,6 +9,10 @@
       Title="Добавление кота">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="7*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
@@ -21,7 +25,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Width="130" Text="Дата поступления"/>
-                    <DatePicker SelectedDate="{Binding ReceiptDate}"/>
+                    <DatePicker Name="DateNow" SelectedDate="{Binding ReceiptDate}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Width="130" Text="Окрас"/>
@@ -48,5 +52,7 @@
                 <Button Width="200" Name="SaveBtn" Click="SaveBtn_Click" Content="Сохранить"/>
             </StackPanel>
         </StackPanel>
+        <Grid Grid.Row="1" Background="#e6e6fa"/>
+        <Button Grid.Row="1" x:Name="BackBtn" Click="BackBtn_Click" Content="Назад" HorizontalAlignment="Right"/>
     </Grid>
 </Page>

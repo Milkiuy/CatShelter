@@ -26,7 +26,10 @@ namespace CatShelter.Pages
             InitializeComponent();
             UpdateCats();
             if(App.CurrentUser == null || App.CurrentUser.Role == 2)
+            {
                 AddBtn.Visibility = Visibility.Hidden;
+                ApplicationsBtn.Visibility = Visibility.Hidden;
+            }
             CBSort.SelectedIndex = 0;
             CBFilter.SelectedIndex = 0;
         }
@@ -111,6 +114,11 @@ namespace CatShelter.Pages
         private void ApplicationBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddEditApplicationPage((sender as Button).DataContext as Cats));
+        }
+
+        private void ApplicationsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ApplicationPage());
         }
     }
 }

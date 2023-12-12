@@ -82,7 +82,7 @@ namespace CatShelter.Entities
         {
             get
             {
-                if (App.CurrentUser == null)
+                if (App.CurrentUser == null || App.CurrentUser.Role == 1)
                     return "Hidden";
                 else return "Visible";
             }

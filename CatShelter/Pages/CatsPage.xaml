@@ -51,7 +51,7 @@
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Grid.Column="2">
-                                <Button x:Name="ApplicationBtn" Click="ApplicationBtn_Click" Content="Подробнее" Visibility="{Binding UserVisibility}"/>
+                                <Button x:Name="ApplicationBtn" Click="ApplicationBtn_Click" Content="Забрать кота" Visibility="{Binding UserVisibility}"/>
                                 <Button x:Name="EditBtn" Click="EditBtn_Click" Content="Редактировать" Visibility="{Binding AdminVisibility}"/>
                                 <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Content="Удалить" Visibility="{Binding AdminVisibility}"/>
                             </StackPanel>
@@ -60,7 +60,9 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Grid Grid.Row="2" Background="#e6e6fa"/>
         <Button HorizontalAlignment="Left" x:Name="AddBtn" Click="AddBtn_Click" Content="Добавить кота" Grid.Row="2"/>
-        <Button x:Name="BackBtn" Click="BackBtn_Click" Content="Назад" Grid.Row="2"/>
+        <Button x:Name="BackBtn" HorizontalAlignment="Right" Click="BackBtn_Click" Content="Назад" Grid.Row="2"/>
+        <Button  x:Name="ApplicationsBtn" Click="ApplicationsBtn_Click" Content="Заявки" Grid.Row="2"/>
     </Grid>
 </Page>

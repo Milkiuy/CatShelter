@@ -38,6 +38,7 @@ namespace CatShelter.Pages
             CBCharacter.ItemsSource = App.Context.Characters.ToList();
             CBColor.ItemsSource = App.Context.Colors.ToList();
             CBGender.ItemsSource = App.Context.Genders.ToList();
+            DateNow.DisplayDate = DateTime.Now.Date;
         }
 
         private void SelectImageBtn_Click(object sender, RoutedEventArgs e)
@@ -58,8 +59,18 @@ namespace CatShelter.Pages
             StringBuilder errorBuilder = new StringBuilder();
             if (String.IsNullOrEmpty(cat.CatName))
                 errorBuilder.AppendLine("Введите имя");
-            if(String.IsNullOrEmpty(cat.Age.ToString()))
+            if(String.IsNullOrEmpty(cat.Age.ToString()) || int.TryParse(cat.Age.ToString(), out var result))
                 errorBuilder.AppendLine("Введите возраст");
+            if (DateNow.DisplayDate < DateTime.Now.Date)
+                errorBuilder.AppendLine("Выберите дату позже сегодняшнего дня");
+            if (CBBreed.SelectedItem == null)
+                errorBuilder.AppendLine("Выберите породу кота");
+            if (CBCharacter.SelectedItem == null)
+                errorBuilder.AppendLine("Выберите характер кота");
+            if (CBColor.SelectedItem == null)
+                errorBuilder.AppendLine("Выберите окрас кота");
+            if (CBGender.SelectedItem == null)
+                errorBuilder.AppendLine("Выберите пол кота");
             if (cat.CatID == 0)
                 App.Context.Cats.Add(cat);
             try
@@ -72,6 +83,12 @@ namespace CatShelter.Pages
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

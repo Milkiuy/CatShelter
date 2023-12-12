@@ -9,23 +9,39 @@
       Title="Заявки">
 
     <Grid>
-        <ListView x:Name="ListApplication">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="ListApplication" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1">
-                        <Grid>
+                        <Grid Width="770">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="570"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="ФИО заявителя"/>
+                                <TextBlock Text="ФИО заявителя -"/>
                                 <TextBlock Text="{Binding FIO}"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Имя котика"/>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                <TextBlock Text="Имя котика       -"/>
                                 <TextBlock Text="{Binding CatName}"/>
                             </StackPanel>
+                            <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Grid.RowSpan="2" Grid.Column="1" Content="Удалить"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
+        <Grid Grid.Row="1" Background="#e6e6fa"/>
+        <Button x:Name="BackBtn" Click="BackBtn_Click" Content="Назад" Grid.Row="1" HorizontalAlignment="Right"/>
     </Grid>
 </Page>

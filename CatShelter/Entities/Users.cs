@@ -27,7 +27,14 @@ namespace CatShelter.Entities
         public string Login { get; set; }
         public string Password { get; set; }
         public int Role { get; set; }
-    
+        public string FIO
+        {
+            get
+            {
+                return Surname.ToString() + " " + Name.ToString() + " " + Patronymic.ToString();
+            }
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Applications> Applications { get; set; }
         public virtual Roles Roles { get; set; }

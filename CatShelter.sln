@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatShelter", "CatShelter\CatShelter.csproj", "{AD9692F0-AD1A-47E8-AB06-B9FD4BF3E23F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryUser", "ClassLibraryUser\ClassLibraryUser.csproj", "{F260C179-3FC8-46C0-946F-BC99916D3C05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryUserTests", "ClassLibraryUserTests\ClassLibraryUserTests.csproj", "{AA03F8B4-228E-4A6F-9D75-789F1EF3595B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{AD9692F0-AD1A-47E8-AB06-B9FD4BF3E23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD9692F0-AD1A-47E8-AB06-B9FD4BF3E23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD9692F0-AD1A-47E8-AB06-B9FD4BF3E23F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F260C179-3FC8-46C0-946F-BC99916D3C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F260C179-3FC8-46C0-946F-BC99916D3C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F260C179-3FC8-46C0-946F-BC99916D3C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F260C179-3FC8-46C0-946F-BC99916D3C05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA03F8B4-228E-4A6F-9D75-789F1EF3595B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA03F8B4-228E-4A6F-9D75-789F1EF3595B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA03F8B4-228E-4A6F-9D75-789F1EF3595B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA03F8B4-228E-4A6F-9D75-789F1EF3595B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

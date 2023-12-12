@@ -27,11 +27,28 @@ namespace CatShelter.Pages
             InitializeComponent();
             cat = cats;
             DataContext = cat;
+            FIOTxt.Text = App.CurrentUser.FIO.ToString();
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var applications = new Applications()
+            {
+                Client = App.CurrentUser.UserID,
+                Cat = cat.CatID
+            };
+            if (cat.CatID != 0)
+                App.Context.Applications.Add(applications);
+            try
+            {
+                App.Context.SaveChanges();
+                MessageBox.Show("Заявка на принятие кота в семью отправлена", "Увдеомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
