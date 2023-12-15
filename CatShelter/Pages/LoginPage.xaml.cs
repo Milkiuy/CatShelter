@@ -23,6 +23,8 @@ namespace CatShelter.Pages
         public LoginPage()
         {
             InitializeComponent();
+            App.CurrentUser = null;
+            LoginTxt.Text = string.Empty;
         }
 
         private void BtnGuest_Click(object sender, RoutedEventArgs e)
